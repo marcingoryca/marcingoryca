@@ -41,6 +41,14 @@
         </form>
     </section>
 
+    <section id="add-genre">
+        <h2>Add genre:</h2>
+        <form action="" method="post">
+            <p><label for="genre-name">Genre:</label><input id="genre-name" name="genre-name"></p>
+            <button type="submit" name="genre-add-submit">Click to add</button>
+        </form>
+    </section>
+
     <section id="add-person">
         <h2>Add person:</h2>
         <form action="" method="post">
