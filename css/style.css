@@ -43,7 +43,7 @@
 
 /** HEADERS */
 h1 {
-    font-size: 5em;
+    font-size: 5rem;
     color: rgba(0,0,0, 0.1);
     /*padding-top: 100px;*/
     /*vertical-align: center;*/
@@ -78,7 +78,7 @@ main {
 footer {
     /*position: relative;*/
     font-family: 'page';
-    font-size: 0.6em;
+    font-size: 0.6rem;
     height: 10%;
 }
 
@@ -131,7 +131,7 @@ nav div {
 
 /** TEXT CLASSES */
 .text-3 {
-    font-size: 3em;
+    font-size: 3rem;
     font-weight: 900;
 }
 
