@@ -57,6 +57,7 @@
         <form action="" method="post">
             <p><label for="track-title">Track title:</label><input type="text" id="track-title" name="track-title"></p>
             <p><label for="track-duration">Track duration:</label><input type="number" id="track-duration" name="track-duration"></p>
+            <button type="submit" name="track-add-submit">Click to add</button>
         </form>
     </section>
 
