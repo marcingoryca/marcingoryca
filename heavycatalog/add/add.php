@@ -15,11 +15,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (isset($_POST['band-name'])) {
+        // Removing white spaces from user input
 
-        $query = 'INSERT INTO bands(name) VALUES (:name)';
-        $stmt = $pdo->prepare($query);
-        $stmt->bindParam(':name', $_POST['band-name']);
-        $stmt->execute();
+        $bandName = trim($_POST['band-name']);
+
+        // Checking if this band already exists in a database
+
+        $checkQuery = 'SELECT COUNT(*) FROM bands WHERE name = :name';
+        $checkStmt = $pdo->prepare($checkQuery);
+        $checkStmt->bindParam(':name', $bandName);
+        $checkStmt->execute();
+
+        if ( $checkStmt->fetchColumn() > 0 ) {
+            //TODO: Change to something nicer (Styling)!
+            echo "This band already exists!";
+        } else {
+            $query = 'INSERT INTO bands(name) VALUES (:name)';
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':name', $bandName);
+            $stmt->execute();
+            //TODO: Change this message to something nicer (Styling)!
+            echo "Band added succesfully!";
+        }
     }
 }
 ?>

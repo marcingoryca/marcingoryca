@@ -1,6 +1,8 @@
 <?php
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        // TODO: Change this!
         $user = 'root';
         $pass = 'root';
 
@@ -14,7 +16,7 @@
         }
 
         if (isset($_POST[''])) {
-            $query = 'SELECT * FROM bands WHERE id= ?';
+            $query = 'SELECT * FROM bands';
             $stmt = $pdo->query($query);
         }
         
