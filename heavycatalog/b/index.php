@@ -4,6 +4,19 @@
         $user = 'root';
         $pass = 'root';
 
+        $connection = 'mysql:host=localhost;dbname=heavycatalog';
+
+        try {
+            $pdo = new PDO($connection, $user, $pass);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo 'Connection not established' . $e->getMessage();
+        }
+
+        if (isset($_POST[''])) {
+            $query = 'SELECT * FROM bands WHERE id= ?';
+            $stmt = $pdo->query($query);
+        }
         
     }
 
