@@ -1,17 +1,27 @@
 <?php
 
-$connect = 'mysql:host=localhost;dbname=heavycatalog';
-$user = 'root';
-$pass = 'root';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-try {
-    $pdo = new PDO($connect, $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $pdo->query('SELECT id FROM bands');
-} catch (PDOException $e) {
-    die('Unable to connect' . $e);
+    $connect = 'mysql:host=localhost;dbname=heavycatalog';
+    $user = 'root';
+    $pass = 'root';
+
+    try {
+        $pdo = new PDO($connect, $user, $pass);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    } catch (PDOException $e) {
+        die('Unable to connect' . $e);
+    }
+
+    if (isset($_POST['band-name'])) {
+
+        $query = 'INSERT INTO bands(name) VALUES (:name)';
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':name', $_POST['band-name']);
+        $stmt->execute();
+    }
 }
-
 ?>
 
 <!DOCTYPE html>
