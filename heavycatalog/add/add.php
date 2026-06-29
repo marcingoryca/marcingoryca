@@ -2,6 +2,8 @@
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    $message = "";
+
     $connect = 'mysql:host=localhost;dbname=heavycatalog';
     $user = 'root';
     $pass = 'root';
@@ -14,29 +16,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die('Unable to connect' . $e);
     }
 
-    if (isset($_POST['band-name'])) {
-        // Removing white spaces from user input
+    if (isset($_POST['band-name']) && isset($_POST['band-country']) && isset($_POST['band-formed-in'])) {
+// Removing white spaces from user input
 
         $bandName = trim($_POST['band-name']);
+        $bandCountry = trim($_POST['band-country']);
+        $formedIn = trim($_POST['band-formed-in']);
 
-        // Checking if this band already exists in a database
+// Checking if this band already exists in a database
 
         $checkQuery = 'SELECT COUNT(*) FROM bands WHERE name = :name';
         $checkStmt = $pdo->prepare($checkQuery);
         $checkStmt->bindParam(':name', $bandName);
         $checkStmt->execute();
+        /*$checkStmt->execute([
+            'name' => $bandName, 'country' => $bandCountry, 'formed_in' => $formedIn
+        ]);*/
 
         if ( $checkStmt->fetchColumn() > 0 ) {
-            //TODO: Change to something nicer (Styling)!
-            echo "This band already exists!";
+            $message = "This band already exists!";
         } else {
-            $query = 'INSERT INTO bands(name) VALUES (:name)';
+            $bandOrigin = trim($_POST['band-origin']);
+            $query = 'INSERT INTO bands(name, country, formed_in, origin) VALUES (:name, :country, :formed_in, :origin)';
             $stmt = $pdo->prepare($query);
-            $stmt->bindParam(':name', $bandName);
-            $stmt->execute();
-            //TODO: Change this message to something nicer (Styling)!
-            echo "Band added succesfully!";
+            //$stmt->bindParam(':name', $bandName);
+            $stmt->execute([
+                'name' => $bandName,
+                'country' => $bandCountry,
+                'formed_in' => $formedIn,
+                'origin' => $bandOrigin
+            ]);
+
+            $message = "Band added succesfully!";
         }
+    } else {
+        $message = "Unexpected error!";
     }
 }
 ?>
@@ -49,6 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Add</title>
 </head>
 <body>
-    
+    <header>
+        <h2><?php echo $message; ?></h2>
+    </header>
 </body>
 </html>

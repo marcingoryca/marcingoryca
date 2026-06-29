@@ -1,9 +1,4 @@
 <?php
-
-$connect = 'mysql:host=localhost;dbname=heavycatalog';
-$user = 'root';
-$pass = 'root';
-
 ?>
 
 <!DOCTYPE html>
@@ -22,10 +17,12 @@ $pass = 'root';
     <section id="add-new-buttons">
         <h2>Add</h2>
         <p>Add new band:<button name="add-new-band" type="button">+</button></p>
+        <!--
         <p>Add new album:<button name="add-new-album" type="button">+</button></p>
         <p>Add new genre:<button name="add-new-genre" type="button">+</button></p>
         <p>Add new person:<button name="add-new-person" type="button">+</button></p>
         <p>Add new track:<button name="add-new-track" type="button">+</button></p>
+        -->
     </section>
 
     <section id="add-band">
@@ -39,7 +36,7 @@ $pass = 'root';
             <button type="submit" name="band-add-submit">Click to add</button>
         </form>
     </section>
-
+<!--
     <section id="add-album">
         <h2>Add album:</h2>
         <form action="add.php" method="post">
@@ -76,6 +73,6 @@ $pass = 'root';
             <button type="submit" name="track-add-submit">Click to add</button>
         </form>
     </section>
-
+-->
 </body>
 </html>
