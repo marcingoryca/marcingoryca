@@ -16,38 +16,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die('Unable to connect' . $e);
     }
 
-    if (isset($_POST['band-name']) && isset($_POST['band-country']) && isset($_POST['band-formed-in'])) {
-// Removing white spaces from user input
+    if (isset($_POST['band-name'])) {
+    // Removing white spaces from user input
 
         $bandName = trim($_POST['band-name']);
-        $bandCountry = trim($_POST['band-country']);
-        $formedIn = trim($_POST['band-formed-in']);
-
-// Checking if this band already exists in a database
+        
+    // Checking if this band already exists in a database
 
         $checkQuery = 'SELECT COUNT(*) FROM bands WHERE name = :name';
         $checkStmt = $pdo->prepare($checkQuery);
         $checkStmt->bindParam(':name', $bandName);
         $checkStmt->execute();
-        /*$checkStmt->execute([
-            'name' => $bandName, 'country' => $bandCountry, 'formed_in' => $formedIn
-        ]);*/
 
         if ( $checkStmt->fetchColumn() > 0 ) {
+
             $message = "This band already exists!";
+
         } else {
-            $bandOrigin = trim($_POST['band-origin']);
-            $query = 'INSERT INTO bands(name, country, formed_in, origin) VALUES (:name, :country, :formed_in, :origin)';
+
+            $query = 'INSERT INTO bands(name) VALUES (:name)';
             $stmt = $pdo->prepare($query);
-            //$stmt->bindParam(':name', $bandName);
-            $stmt->execute([
-                'name' => $bandName,
-                'country' => $bandCountry,
-                'formed_in' => $formedIn,
-                'origin' => $bandOrigin
-            ]);
+            $stmt->bindParam(':name', $bandName);
+            $stmt->execute();
 
             $message = "Band added succesfully!";
+
         }
     } else {
         $message = "Unexpected error!";

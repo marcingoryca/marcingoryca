@@ -30,10 +30,17 @@
 
         <form action="add.php" method="post">
             <p><label for="band-name">Band Name:</label><input id="band-name" type="text" name="band-name"></p>
-            <p><label for="band-country">Country:</label><input id="band-country" type="text" name="band-country"></p>
-            <p><label for="band-origin">Origin:</label><input id="band-origin" type="text" name="band-origin"></p>
-            <p><label for="band-formed-in">Formed in:</label><input id="band-formed-in" type="text" name="band-formed-in"></p>
-            <button type="submit" name="band-add-submit">Click to add</button>
+            <p hidden><label for="band-country">Country:</label><input id="band-country" type="text" name="band-country"></p>
+            <p hidden><label for="band-origin">Origin:</label><input id="band-origin" type="text" name="band-origin"></p>
+            <p hidden><label for="band-formed-in">Formed in:</label><input id="band-formed-in" type="number" name="band-formed-in"></p>
+            
+            <button type="submit" name="band-add-submit">Save</button>
+
+            <p>
+            <button>+ Country</button>
+            <button>+ Origin</button>
+            <button>+ Year of formation</button>    
+            </p>
         </form>
     </section>
 <!--
