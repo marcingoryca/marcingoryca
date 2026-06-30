@@ -14,25 +14,14 @@
         <h4>New Home for Heavy Music</h4>
     </header>
 
-    <section id="add-new-buttons">
-        <h2>Add</h2>
-        <p>Add new band:<button name="add-new-band" type="button">+</button></p>
-        <!--
-        <p>Add new album:<button name="add-new-album" type="button">+</button></p>
-        <p>Add new genre:<button name="add-new-genre" type="button">+</button></p>
-        <p>Add new person:<button name="add-new-person" type="button">+</button></p>
-        <p>Add new track:<button name="add-new-track" type="button">+</button></p>
-        -->
-    </section>
-
     <section id="add-band">
         <h2>Add new band:</h2>
 
         <form action="add.php" method="post">
             <p><label for="band-name">Band Name:</label><input id="band-name" type="text" name="band-name"></p>
-            <p hidden><label for="band-country">Country:</label><input id="band-country" type="text" name="band-country"></p>
-            <p hidden><label for="band-origin">Origin:</label><input id="band-origin" type="text" name="band-origin"></p>
-            <p hidden><label for="band-formed-in">Formed in:</label><input id="band-formed-in" type="number" name="band-formed-in"></p>
+            <p><label for="band-country">Country:</label><input id="band-country" type="text" name="band-country"></p>
+            <p><label for="band-origin">Origin:</label><input id="band-origin" type="text" name="band-origin"></p>
+            <p><label for="band-formed-in">Formed in:</label><input id="band-formed-in" type="number" name="band-formed-in"></p>
             
             <button type="submit" name="band-add-submit">Save</button>
 
