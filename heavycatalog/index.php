@@ -19,10 +19,5 @@
             <button type="submit" name="submit">Search</button>
         </form>
     </section>
-
-    <section id="adder">
-        <h2>Add artist</h2>
-        <a href="add" title="Add artist">Add artist</a>
-    </section>
 </body>
 </html>

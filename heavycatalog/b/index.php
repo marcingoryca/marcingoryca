@@ -1,12 +1,12 @@
 <?php
 
 /*
-1. Connect to database
-2. Check input from user
+1. Connect to database [x]
+2. Check input from user [x]
 */
 
 $result = NULL;
-$message = null;
+$message = "";
 // TODO: Change this!
 $user = 'root';
 $pass = 'root';
@@ -18,6 +18,7 @@ try {
 } catch (PDOException $e) {
     echo 'Connection not established' . $e->getMessage();
 }
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['searcher'])) {
         $bandName = trim($_POST['searcher']);
