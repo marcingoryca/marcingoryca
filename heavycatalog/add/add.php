@@ -44,6 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // If there are additional fields to fill
+
+        /*
         if (isset($_POST['band-country'])) {
             $bandCountry = trim($_POST['band-country']);
 
@@ -73,10 +75,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bindParam(':formed_in', $bandFormedIn);
             $stmt->execute();
         }
+        */
     } else {
         $message = "Unexpected error!";
     }
 }
+
 ?>
 
 <!DOCTYPE html>
