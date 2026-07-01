@@ -19,5 +19,9 @@
             <button type="submit" name="submit">Search</button>
         </form>
     </section>
+
+    <?php
+        include "include/test.html.php";
+    ?>
 </body>
 </html>
