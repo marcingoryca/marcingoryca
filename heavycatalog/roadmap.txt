@@ -1,0 +1,9 @@
+HEAVYCATALOG
+|->index.php (entry point)
+|
+|->Add  (path to panel for adding new entries)
+|-->index.php
+|-->add.php
+|
+|->b    (path to all bands)
+|-->index.php
